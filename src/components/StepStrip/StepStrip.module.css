@@ -1,0 +1,57 @@
+.strip {
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	gap: clamp(16px, 3.3vw, 42px);
+	margin: 25px 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.step {
+	position: relative;
+	display: flex;
+	min-width: 52px;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+	color: var(--color-muted);
+}
+
+.connector {
+	position: absolute;
+	top: 19px;
+	right: calc(50% + 26px);
+	width: clamp(28px, 4vw, 54px);
+	height: 1px;
+	transform-origin: left center;
+	background: linear-gradient(90deg, rgba(169, 153, 232, 0.25), rgba(208, 199, 250, 0.85));
+	animation: connector-flow 2.6s ease-in-out infinite alternate;
+}
+
+.iconBox {
+	display: grid;
+	width: 40px;
+	height: 40px;
+	place-items: center;
+	border: 1px solid rgba(208, 199, 250, 0.25);
+	border-radius: 50%;
+	background: rgba(169, 153, 232, 0.1);
+	color: var(--color-purple-soft);
+}
+
+.label { color: #d4d2e1; font-size: 0.75rem; font-weight: 600; }
+
+@keyframes connector-flow {
+	from { opacity: 0.45; transform: scaleX(0.84); }
+	to { opacity: 1; transform: scaleX(1); }
+}
+
+@media (max-width: 767px) {
+	.strip { gap: clamp(28px, 11vw, 58px); margin-top: 18px; }
+	.connector { width: clamp(40px, 13vw, 66px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.connector { animation: none; }
+}

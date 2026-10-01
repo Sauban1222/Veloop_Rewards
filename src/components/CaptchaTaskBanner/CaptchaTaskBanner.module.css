@@ -1,0 +1,109 @@
+.theme { background: linear-gradient(118deg, #222337 0%, #242439 53%, #302a47 100%); }
+.theme::after { right: -130px; bottom: -220px; border-color: rgba(182, 164, 243, 0.11); }
+
+.art {
+	position: relative;
+	display: flex;
+	min-height: 292px;
+	flex-direction: column;
+	justify-content: center;
+	padding: 27px 18px 0;
+}
+
+.orbit {
+	position: absolute;
+	top: 12px;
+	left: 50%;
+	width: min(90%, 390px);
+	aspect-ratio: 1.6;
+	border: 1px solid rgba(201, 189, 242, 0.1);
+	border-radius: 50%;
+	transform: translateX(-50%) rotate(-13deg);
+}
+
+.captchaCard {
+	position: relative;
+	z-index: 1;
+	width: min(100%, 370px);
+	margin: 0 auto;
+	padding: 18px 21px 15px;
+	border: 1px solid rgba(218, 212, 244, 0.18);
+	border-radius: 11px;
+	background: linear-gradient(145deg, rgba(54, 52, 79, 0.98), rgba(37, 38, 57, 0.98));
+	box-shadow: 0 18px 42px rgba(8, 8, 20, 0.25);
+	transform: rotate(-2deg);
+	animation: card-drift 6s ease-in-out infinite;
+}
+
+.cardTop, .cardFoot { display: flex; align-items: center; justify-content: space-between; }
+.cardLabel { color: #c6c0df; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; }
+.statusDot { width: 7px; height: 7px; border-radius: 50%; background: var(--color-purple-soft); opacity: 0.8; }
+
+.code {
+	margin: 13px 0 10px;
+	color: #f7f5ff;
+	font-family: 'Courier New', monospace;
+	font-size: clamp(2.5rem, 5.5vw, 3.7rem);
+	font-weight: 700;
+	letter-spacing: 0.23em;
+	line-height: 1.1;
+	text-align: center;
+	text-shadow: 0 2px 12px rgba(210, 198, 255, 0.1);
+}
+
+.cardFoot { padding-top: 10px; border-top: 1px solid rgba(216, 212, 237, 0.1); color: #aaa9bc; font-size: 0.69rem; }
+
+.rewardGem {
+	position: absolute;
+	z-index: 2;
+	top: 50%;
+	right: 4%;
+	display: grid;
+	width: 68px;
+	height: 68px;
+	place-items: center;
+	border: 1px solid rgba(208, 199, 250, 0.29);
+	border-radius: 50%;
+	background: #333047;
+	color: var(--color-purple-soft);
+	transform: translateY(-58%);
+	animation: gem-drift 4s ease-in-out infinite;
+}
+
+.sparkle, .gemFloat {
+	position: absolute;
+	z-index: 1;
+	color: var(--color-purple-soft);
+	opacity: 0.86;
+	animation: gem-drift 4.8s ease-in-out infinite;
+}
+.sparkle { top: 13%; left: 12%; }
+.gemFloat { top: 21%; right: 15%; color: var(--color-gold); animation-delay: -1.6s; }
+
+@keyframes card-drift {
+	0%, 100% { transform: translateY(0) rotate(-2deg); }
+	50% { transform: translateY(-5px) rotate(-1deg); }
+}
+@keyframes gem-drift {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(-7px); }
+}
+
+@media (max-width: 1023px) {
+	.art { min-height: 270px; }
+	.rewardGem { right: 1%; }
+}
+
+@media (max-width: 767px) {
+	.art { min-height: 190px; padding: 12px 0 0; }
+	.captchaCard { width: min(84%, 365px); }
+	.rewardGem { right: 2%; width: 56px; height: 56px; }
+	.rewardGem svg { width: 32px; height: 32px; }
+	.orbit { top: 4px; width: 85%; }
+	.sparkle { top: 8%; left: 4%; }
+	.gemFloat { top: 12%; right: 10%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.captchaCard, .rewardGem, .sparkle, .gemFloat { animation: none; }
+}

@@ -1,0 +1,25 @@
+@import url('./tokens.css');
+
+* { box-sizing: border-box; }
+
+html {
+	min-width: 320px;
+	background: var(--color-page);
+}
+
+body {
+	min-width: 320px;
+	min-height: 100vh;
+	margin: 0;
+	background: var(--color-page);
+	color: var(--color-text);
+	font-family: 'Avenir Next', Avenir, 'Segoe UI', sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+
+button, a { font: inherit; }
+
+button:focus-visible, a:focus-visible {
+	outline: 3px solid var(--color-gold);
+	outline-offset: 4px;
+}

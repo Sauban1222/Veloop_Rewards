@@ -1,0 +1,14 @@
+:root {
+	color-scheme: dark;
+	--color-page: #161827;
+	--color-surface: #202337;
+	--color-surface-raised: #292b42;
+	--color-border: rgba(211, 211, 235, 0.13);
+	--color-text: #f5f4fb;
+	--color-muted: #b7b8ca;
+	--color-purple: #a999e8;
+	--color-purple-soft: #d0c7fa;
+	--color-purple-deep: #544a7b;
+	--color-gold: #e5c67c;
+	--content-width: 1240px;
+}

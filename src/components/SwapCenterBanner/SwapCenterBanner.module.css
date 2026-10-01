@@ -1,0 +1,228 @@
+.theme {
+	min-height: 420px;
+	grid-template-columns: minmax(0, 0.95fr) minmax(380px, 1fr);
+	gap: 34px;
+	padding: 28px 42px;
+	background: linear-gradient(116deg, var(--surface-1, var(--color-surface)) 0%, #20283a 58%, #1d2a3b 100%);
+}
+
+.theme :global(h1) {
+	margin-bottom: 0.4rem;
+	font-size: clamp(2.35rem, 3.8vw, 3.2rem);
+	line-height: 1.04;
+}
+
+.theme :global(p) {
+	margin: 14px 0 22px;
+	color: var(--text-2, var(--color-muted));
+	line-height: 1.55;
+}
+
+.goldHeading { color: var(--gold-1, var(--color-gold)); }
+
+.illustration {
+	position: relative;
+	display: grid;
+	min-height: 300px;
+	place-items: center;
+	isolation: isolate;
+}
+
+.walletBackdrop {
+	position: absolute;
+	z-index: -1;
+	top: 50%;
+	left: 50%;
+	display: flex;
+	width: min(90%, 400px);
+	height: 210px;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 22px;
+	border: 1px solid var(--border-soft, var(--color-border));
+	border-radius: 12px;
+	background: linear-gradient(135deg, color-mix(in srgb, var(--surface-2, var(--color-surface-raised)) 72%, transparent), color-mix(in srgb, var(--bg-body, var(--color-page)) 68%, transparent));
+	transform: translate(-50%, -50%) rotate(-5deg);
+}
+
+.walletBackdrop span {
+	display: block;
+	width: 82px;
+	height: 6px;
+	border-radius: 4px;
+	background: var(--border-soft, var(--color-border));
+}
+
+.walletBackdrop span:nth-child(2) { width: 57%; height: 28px; opacity: 0.48; }
+.walletBackdrop span:nth-child(3) { width: 42%; opacity: 0.55; }
+
+.cardStage {
+	position: relative;
+	display: grid;
+	width: min(100%, 480px);
+	grid-template-columns: minmax(0, 1fr) 58px minmax(0, 1fr);
+	align-items: center;
+}
+
+.currencyCard {
+	position: relative;
+	display: flex;
+	min-width: 0;
+	height: 194px;
+	flex-direction: column;
+	justify-content: center;
+	padding: 18px;
+	overflow: hidden;
+	border: 1px solid var(--border-soft, var(--color-border));
+	border-radius: 12px;
+	background: linear-gradient(145deg, var(--surface-2, var(--color-surface-raised)), var(--surface-1, var(--color-surface)));
+	box-shadow: 0 14px 30px color-mix(in srgb, var(--bg-body, var(--color-page)) 30%, transparent);
+}
+
+.veCard {
+	border-color: color-mix(in srgb, var(--gold-1, var(--color-gold)) 54%, var(--border-soft, var(--color-border)));
+	transform: translateX(0);
+	animation: left-card-drift 5.5s ease-in-out infinite;
+}
+
+.sveCard {
+	border-color: color-mix(in srgb, var(--blue-1, #8bb9e8) 58%, var(--border-soft, var(--color-border)));
+	transform: translateX(0);
+	animation: right-card-drift 5.5s ease-in-out infinite;
+}
+
+.cardEyebrow {
+	color: var(--text-2, var(--color-muted));
+	font-size: 0.58rem;
+	font-weight: 700;
+	letter-spacing: 0.13em;
+}
+
+.cardCurrency {
+	margin-top: 8px;
+	color: var(--gold-1, var(--color-gold));
+	font-size: clamp(2.5rem, 4vw, 3.4rem);
+	font-weight: 700;
+	line-height: 1;
+}
+
+.sveCard .cardCurrency { color: var(--blue-1, #8bb9e8); }
+
+.cardLabel {
+	max-width: 145px;
+	margin-top: 9px;
+	color: var(--text-2, var(--color-muted));
+	font-size: 0.73rem;
+	line-height: 1.35;
+}
+
+.cardMark {
+	position: absolute;
+	right: -22px;
+	bottom: -34px;
+	width: 92px;
+	height: 92px;
+	border: 1px solid color-mix(in srgb, var(--gold-1, var(--color-gold)) 36%, transparent);
+	border-radius: 50%;
+}
+
+.sveCard .cardMark { border-color: color-mix(in srgb, var(--blue-1, #8bb9e8) 36%, transparent); }
+
+.swapBetween {
+	position: relative;
+	z-index: 2;
+	display: grid;
+	place-items: center;
+}
+
+.swapCircle {
+	position: relative;
+	display: grid;
+	width: 54px;
+	height: 54px;
+	place-items: center;
+	border: 1px solid var(--gold-1, var(--color-gold));
+	border-radius: 50%;
+	background: var(--surface-1, var(--color-surface));
+	color: var(--gold-1, var(--color-gold));
+	box-shadow: 0 0 0 5px color-mix(in srgb, var(--surface-1, var(--color-surface)) 75%, transparent);
+	animation: swap-rotate 8s linear infinite;
+}
+
+.inboundArrow,
+.outboundArrow {
+	position: absolute;
+	top: 50%;
+	color: var(--blue-1, #8bb9e8);
+	transform: translateY(-50%);
+	animation: arrows-slide 2.8s ease-in-out infinite alternate;
+}
+
+.inboundArrow { left: -16px; }
+.outboundArrow { right: -16px; animation-delay: -1.4s; }
+
+@keyframes left-card-drift {
+	0%, 100% { transform: translateX(0); }
+	50% { transform: translateX(5px); }
+}
+
+@keyframes right-card-drift {
+	0%, 100% { transform: translateX(0); }
+	50% { transform: translateX(-5px); }
+}
+
+@keyframes swap-rotate {
+	to { transform: rotate(360deg); }
+}
+
+@keyframes arrows-slide {
+	from { opacity: 0.55; transform: translate(0, -50%); }
+	to { opacity: 1; transform: translate(4px, -50%); }
+}
+
+@media (max-width: 1023px) {
+	.theme {
+		min-height: 460px;
+		grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1fr);
+		gap: 22px;
+	padding: 30px;
+	}
+
+	.illustration { min-height: 270px; }
+	.cardStage { grid-template-columns: minmax(0, 1fr) 52px minmax(0, 1fr); }
+	.currencyCard { height: 176px; padding: 14px; }
+	.swapCircle { width: 48px; height: 48px; }
+}
+
+@media (max-width: 767px) {
+	.theme {
+		min-height: 500px;
+		grid-template-columns: minmax(0, 1fr);
+		gap: 8px;
+		padding: 15px 18px 20px;
+	}
+
+	.theme > div:first-child { order: 0; }
+	.theme > div:nth-child(2) { order: 1; }
+	.theme :global(h1) { font-size: clamp(2rem, 8vw, 2.45rem); }
+	.theme :global(p) { margin: 8px 0 14px; font-size: 0.9rem; }
+	.illustration { min-height: 210px; }
+	.cardStage { width: min(100%, 420px); grid-template-columns: minmax(0, 1fr) 46px minmax(0, 1fr); }
+	.currencyCard { height: 154px; padding: 12px; }
+	.cardEyebrow { font-size: 0.5rem; }
+	.cardCurrency { margin-top: 7px; font-size: 2.15rem; }
+	.cardLabel { margin-top: 7px; font-size: 0.64rem; }
+	.swapCircle { width: 44px; height: 44px; }
+	.swapCircle svg { width: 20px; height: 20px; }
+	.walletBackdrop { height: 174px; }
+}
+
+.reducedMotion .veCard,
+.reducedMotion .sveCard,
+.reducedMotion .swapCircle,
+.reducedMotion .inboundArrow,
+.reducedMotion .outboundArrow { animation: none; }
+
+@media (prefers-reduced-motion: reduce) {
+	.veCard, .sveCard, .swapCircle, .inboundArrow, .outboundArrow { animation: none; }
+}

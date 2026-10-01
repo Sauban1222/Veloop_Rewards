@@ -1,0 +1,9 @@
+.page {
+  width: min(calc(100% - 48px), var(--content-width));
+  margin: 0 auto;
+  padding: clamp(28px, 5.5vh, 58px) 0;
+}
+
+@media (max-width: 767px) {
+  .page { width: min(calc(100% - 28px), var(--content-width)); padding: 14px 0; }
+}
